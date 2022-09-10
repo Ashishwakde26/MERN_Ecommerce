@@ -52,6 +52,10 @@ userSchema.methods.getJwtToken = function () {
     })
 }
 
+userSchema.methods.comparepassoword = function (sendPassword) {
+    return bcrypt.compare(sendPassword, this.password)
+}
+
 userSchema.pre('save', async function (next) {
     if(!this.isModified('password')) {
         next()
