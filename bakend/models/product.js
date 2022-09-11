@@ -86,6 +86,11 @@ const productSchema = new Schema({
             }
         }
     ],
+    user: {
+        type: Schema.ObjectId,
+        ref: 'user',
+        required: true
+    },
     createAt: {
         type: Date,
         Default: Date.now
