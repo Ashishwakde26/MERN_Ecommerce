@@ -2,7 +2,7 @@ const app = require('./app');
 const connetdatabase = require('./config/database');
 const dotenv = require('dotenv');
 
-dotenv.config({ path:'bakend/config/config.env'});
+dotenv.config({ path:'config/config.env'});
 
 //Handle uncaught exception
 process.on('uncaughtException', err => {
@@ -12,7 +12,7 @@ process.on('uncaughtException', err => {
 
 connetdatabase();
 
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(4000, () => {
     console.log(`Server is started: ${process.env.PORT}`);
 })
 

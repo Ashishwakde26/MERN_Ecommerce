@@ -2,9 +2,9 @@
   "name": "node_learn",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node bakend/server.js",
+    "start": "nodemon bakend/server.js",
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon bakend/server.js",
     "prod": "SET NODE_ENV=PRODUCTION& nodemon bakend/server.js",
     "seed": "node bakend/utils/seeder.js"

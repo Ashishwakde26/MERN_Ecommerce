@@ -37,6 +37,8 @@ exports.loginUser = catchAsyncError( async (req, res, next) =>{
     }
 
     const User = await user.findOne({email}).select('+password')
+
+
     if(!User) {
         return next(new ErrorHandler("Invalid Email or password", 401))
     }
@@ -46,7 +48,6 @@ exports.loginUser = catchAsyncError( async (req, res, next) =>{
         return next(new ErrorHandler("Invalid email or password", 401))
     }
 
-    
     sendToken(User, 200, res);
 })
 
@@ -169,5 +170,30 @@ exports.resetPassword = catchAsyncError( async (req, res, next) => {
     res.status(200).json({
         success: true,
         message: "Password Updated"
+    })
+})
+
+
+exports.allUsers = catchAsyncError( async (req, res) => {
+    const users = await user.find();
+
+    res.status(200).json({
+        success: true,
+        users
+    })
+})
+
+
+exports.getUserDetails = catchAsyncError( async  (req, res) => {
+
+    const userDetail = await user.findById(req.params.id)
+
+    if(!userDetail) {
+        return next(new ErrorHandler(`user does not found with id ${req.params.id}`))
+    }
+
+    res.status(200).json({
+        success: true,
+        userDetail
     })
 })
