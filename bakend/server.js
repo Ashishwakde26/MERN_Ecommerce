@@ -2,9 +2,6 @@ const app = require('./app');
 const connetdatabase = require('./config/database');
 const dotenv = require('dotenv');
 
-
-
-
 dotenv.config({ path:'bakend/config/config.env'});
 
 //Handle uncaught exception
@@ -25,4 +22,3 @@ process.on('unhandledRejection', err => {
         process.exit(1);
     })
 })
-

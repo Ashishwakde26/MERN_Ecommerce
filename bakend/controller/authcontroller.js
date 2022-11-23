@@ -75,13 +75,8 @@ exports.updatePassword = catchAsyncError( async ( req, res, next) => {
     }
 
     User.password = password;
-
     await User.save();
-
-    res.status(200).json({
-        success: true,
-        User
-    })
+    sendToken(User, 200, res);
 
 })
 
